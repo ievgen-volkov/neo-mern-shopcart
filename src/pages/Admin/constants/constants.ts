@@ -1,4 +1,4 @@
-import { ProductItem } from "@/shared/models/models";
+import { ProductItem } from "../../../shared/models/models";
 
 export const initialProduct:ProductItem = {
   _id: "",

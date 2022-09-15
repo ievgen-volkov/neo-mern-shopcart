@@ -3,9 +3,9 @@ import { ListOptionsItem } from "../../models/models";
 import { Box, Collapse } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import List from "../List/List";
-import { theme } from "@/app/constants/theme";
-import { useAppDispatch } from "@/app/hooks/useAppDispatch";
-import { category } from "@/store/ducks";
+import { theme } from "../../../app/constants/theme";
+import { useAppDispatch } from "../../../app/hooks/useAppDispatch";
+import { category } from "../../../store/ducks";
 
 interface DropdownProps {
   options: ListOptionsItem[];

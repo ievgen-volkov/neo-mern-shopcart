@@ -5,9 +5,26 @@ import CartItem from "../components/CartItem";
 import { useAppSelector } from "../../../app/hooks/useAppDispatch";
 import { cartSelector } from "../../../store/selectors";
 import Page from "../../../shared/components/Page/Page";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@mui/material";
+import { theme } from "../../../app/constants/theme";
+
+const useStyles = makeStyles(() => ({
+  price: {
+    fontWeight: 800,
+    letterSpacing: "0.07rem",
+    display: "block",
+    margin: theme.spacing(2, "auto"),
+    textAlign: "center",
+    "& span": {
+      color: "red",
+    },
+  },
+}));
 
 const Cart = () => {
   const { products, subTotal } = useAppSelector(cartSelector);
+  const classes = useStyles();
 
   return (
     <Page pageTitle="Your Cart" centered >
@@ -26,8 +43,9 @@ const Cart = () => {
         variant="subtitle1"
         color="textPrimary"
         style={{ marginTop: 20 }}
+        className={classes.price}
       >
-        subTotal ${subTotal}
+        subTotal <span>${subTotal}</span>
       </Typography>
     </Page>
   );

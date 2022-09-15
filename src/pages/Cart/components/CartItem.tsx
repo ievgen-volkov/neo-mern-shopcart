@@ -6,27 +6,31 @@ import { ProductItem } from "../../../shared/models/models";
 import { theme } from "../../../app/constants/theme";
 import { useAppDispatch } from "../../../app/hooks/useAppDispatch";
 import { add, remove, removeFromCart } from "../../../store/ducks";
+import { Theme, useMediaQuery } from "@mui/material";
 
 
 interface CartItemProps {
   product: ProductItem;
 }
 
-const useStyles = makeStyles(() => ({
+type StyleProps = { matches: boolean };
+
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   wrapper: {
     display: "flex",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
     height: 104,
     margin: theme.spacing(0, "auto"),
   },
   root: {
-    maxWidth: 800,
+    maxWidth: ({ matches }) => (matches ? 364 : 800),
     height: 100,
     display: "flex",
-    padding: theme.spacing(1, 5, 1, 2),
     justifyContent: "space-between",
     alignItems: "center",
+    padding: theme.spacing(1, 1, 1, 1),
     background: theme.palette.background.paper,
   },
   imageWrapper: {
@@ -34,19 +38,21 @@ const useStyles = makeStyles(() => ({
     height: 80,
     borderRadius: "50%",
     overflow: "hidden",
+    marginRight: ({ matches }) => (matches ? theme.spacing(1.5) : theme.spacing(0)),
   },
   img: {
     display: "block",
-    width: "120%",
+    width: "110%",
     height: "100%",
     background: "#000",
+    padding: theme.spacing(2, 1, 0, 0)
   },
   quantityBlock: {
-    width: 40,
+    width: 55,
     height: 50,
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   buttonsStack: {
     width: 20,
@@ -66,18 +72,24 @@ const useStyles = makeStyles(() => ({
     },
   },
   title: {
-    marginLeft: theme.spacing(2),
-    width: 100,
+    marginLeft: ({ matches }) => (matches ? theme.spacing(0) : theme.spacing(2)),
+    width: ({ matches }) => (matches ? 85 : 120),
     overflow: "hidden",
     height: 90,
     display: "flex",
+    justifyContent: "space-around",
     alignItems: "center",
   },
+  removeCart: {
+    margin: ({ matches }) => (matches ? theme.spacing("10px", 0, 0, "94%") : theme.spacing(0)),
+  }
 }));
 
 const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+  const matches = useMediaQuery("(max-width:600px)");
+  const classes = useStyles({ matches });
+
   const addQuantityHandler = useCallback(() => {
     dispatch(add(product));
   }, [dispatch]);
@@ -88,6 +100,7 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
   const removeFromCartHandler = useCallback(() => {
     dispatch(removeFromCart(product));
   }, [dispatch]);
+
   return (
     <Box className={classes.wrapper}>
       <Box className={classes.root}>
@@ -134,7 +147,7 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
           </div>
         </Box>
       </Box>
-      <IconButton style={{ marginLeft: 5 }} onClick={removeFromCartHandler}>
+      <IconButton className={classes.removeCart} onClick={removeFromCartHandler}>
         <RemoveShoppingCart />
       </IconButton>
     </Box>

@@ -3,7 +3,7 @@ import {  ListOptionsItem } from "../../models/models";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import ListItem from "./ListItem";
-import { theme } from "@/app/constants/theme";
+import { theme } from "../../../app/constants/theme";
 
 interface ListProps {
   options: ListOptionsItem[];

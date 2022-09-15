@@ -23,10 +23,11 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     justifyContent: "center",
   },
   imageWrapper: {
-    width: 400,
+    width: 450,
     height: 250,
     overflow: "hidden",
     border: "2px solid #FFF",
+    borderRadius: "5px",
     background: theme.palette.primary.main,
   },
   image: {

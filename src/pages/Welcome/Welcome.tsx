@@ -4,15 +4,17 @@ import { Box } from "@material-ui/core";
 import bg from '../../@assets/img/welcome_bg.jpg'
 import EnterButton from "./EnterButton";
 import { useFetchAllProducts } from "../../app/hooks/useFetchAllProducts";
+import { Theme, useMediaQuery } from "@mui/material";
+import { matches } from "lodash";
 
-const useStyles = makeStyles(()=>({
+type StyleProps = { matches: boolean };
+
+const useStyles = makeStyles<Theme, StyleProps>(()=>({
   root: {
     width: "100%",
     height:"100vh",
     overflow:"hidden",
-    backgroundImage: `url(${bg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    background: ({ matches }) => (matches ? `url(${bg}) center/contain no-repeat ` : `url(${bg}) center center/cover`),
   }
 
 }))
@@ -21,7 +23,8 @@ const useStyles = makeStyles(()=>({
 
 const Welcome = () => {
   useFetchAllProducts()
-  const classes = useStyles();
+  const matches = useMediaQuery("(max-width: 600px)")
+  const classes = useStyles({ matches });
   return (
     <Box className={classes.root}>
       <EnterButton title='Enter'/>

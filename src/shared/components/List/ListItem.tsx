@@ -1,7 +1,7 @@
 import React, { FunctionComponent, memo, useCallback } from "react";
 import { ListOptionsItem } from "../../models/models";
 import { makeStyles } from "@material-ui/styles";
-import { theme } from "@/app/constants/theme";
+import { theme } from "../../../app/constants/theme";
 import { Box  } from "@material-ui/core";
 
 interface ListItemPops {

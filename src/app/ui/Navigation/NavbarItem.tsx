@@ -35,9 +35,13 @@ const useStyles = makeStyles<Pick<StyleProps, "active">, StyleProps>(() => ({
     alignItems:"center",
     justifyContent:"center",
     fontSize: 10,
-    position:"absolute",
-    top:0,
-    left: 35
+    position: "absolute",
+    top: 0,
+    left: 35,
+  },
+  cartQuantity: {
+    textAlign: "center",
+    transform: "translate(-20%, 10%)",
   },
 }));
 
@@ -54,7 +58,7 @@ const NavbarItem: FunctionComponent<NavbarItemProps> = ({ label, path }) => {
         <Typography className={classes.title}>{label}</Typography>
       </Link>
       {(label === "Cart") && totalInCart ? (
-        <Box className={classes.cartIcon}>{totalInCart}</Box>
+        <Box className={classes.cartIcon}><span className={classes.cartQuantity}>{totalInCart}</span></Box>
       ) : (
         ""
       )}

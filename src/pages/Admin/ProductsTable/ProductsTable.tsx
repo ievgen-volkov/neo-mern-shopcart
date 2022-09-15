@@ -7,10 +7,11 @@ import { theme } from "../../../app/constants/theme";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks/useAppDispatch";
 import { useFetchAllProducts } from "../../../app/hooks/useFetchAllProducts";
 import { deleteProduct } from "../../../store/thunks";
+import { ProductItem } from "../../../shared/models/models";
 
 const useStyles = makeStyles(() => ({
   cell: {
-    padding: theme.spacing(0.5, 2),
+    padding: theme.spacing(0.8, 1),
     background: "#dcdbdb",
     border: "1px solid #ccc",
     color: "#494848",
@@ -35,7 +36,7 @@ const ProductsTable = () => {
 
   return (
     <Box>
-      <Typography variant="h6" align="center" mb={2}>
+      <Typography variant="h6" align="center" mb={4} mt={2}>
         All products
       </Typography>
       {isLoading ? (
@@ -52,7 +53,7 @@ const ProductsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product: { _id: React.Key | null | undefined; }) => (
+            {products.map((product: ProductItem ) => (
               <Row
                 product={product}
                 key={product._id}

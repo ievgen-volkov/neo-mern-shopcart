@@ -6,7 +6,7 @@
     price: number;
     category:string;
     quantity: number;
-    added?:boolean;
+    added?: boolean;
  }
 
  export interface ListOptionsItem {

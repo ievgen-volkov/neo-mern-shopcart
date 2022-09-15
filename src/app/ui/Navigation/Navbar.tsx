@@ -57,7 +57,7 @@ const Navbar = () => {
   return (
     <AppBar className={classes.root}>
       <Container>
-      <Toolbar>
+      <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <Link to={AppRoutes.Welcome}>
         <Typography className={classes.logo}>MERN shopping cart</Typography>
         </Link>
