@@ -15,7 +15,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     overflow: "hidden",
     background: ({ matches }) =>
       matches
-        ? `url(${bg}) center/contain no-repeat `
+        ? `url(${bg}) 26%/86em no-repeat `
         : `url(${bg}) center center/cover`,
   },
 }));

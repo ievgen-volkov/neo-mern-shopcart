@@ -1,5 +1,5 @@
 import React, { FunctionComponent, memo, useCallback } from "react";
-import { IconButton } from "@mui/material";
+import { IconButton, Theme, useMediaQuery } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SystemSecurityUpdateIcon from "@mui/icons-material/SystemSecurityUpdate";
 import { makeStyles } from "@material-ui/styles";
@@ -8,19 +8,22 @@ import { ProductItem } from "../../../shared/models/models";
 import { theme } from "../../../app/constants/theme";
 import { useAppDispatch } from "../../../app/hooks/useAppDispatch";
 import { fetchAllProducts } from "../../../store/thunks";
+import { matches } from "lodash";
 
 export interface RowProps {
   product: ProductItem;
   onDelete: (id: string) => void;
 }
 
-const useStyles = makeStyles(() => ({
+type styleProps = { matches: boolean };
+
+const useStyles = makeStyles<Theme, styleProps>(() => ({
   cell: {
     padding: theme.spacing(0.5, 1),
     background: "#FFF",
     border: "1px solid #ccc",
     color: "#494848",
-    fontSize: 16,
+    fontSize: ({ matches }) => (matches ? 15 : 20),
     textAlign: "center",
     letterSpacing: "0.05rem",
   },
@@ -34,7 +37,8 @@ const Row: FunctionComponent<RowProps> = ({ product, onDelete }) => {
     dispatch(fetchAllProducts());
   }, [onDelete, product._id]);
 
-  const classes = useStyles();
+  const matches = useMediaQuery("(max-width: 600px)")
+  const classes = useStyles({ matches });
   return (
     <tr>
       <td className={classes.cell}>{product.title}</td>

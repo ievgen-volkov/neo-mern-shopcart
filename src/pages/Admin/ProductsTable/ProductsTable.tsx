@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from "react";
 import Row from "./Row";
-import { Box, Typography } from "@mui/material";
+import { Box, Theme, Typography, useMediaQuery } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
 import { LinearProgress } from "@material-ui/core";
 import { theme } from "../../../app/constants/theme";
@@ -12,13 +12,15 @@ import { useFetchAllProducts } from "../../../app/hooks/useFetchAllProducts";
 import { deleteProduct } from "../../../store/thunks";
 import { ProductItem } from "../../../shared/models/models";
 
-const useStyles = makeStyles(() => ({
+type StyleProps = {matches: boolean};
+
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   cell: {
     padding: theme.spacing(0.8, 1),
     background: "#dcdbdb",
     border: "1px solid #ccc",
     color: "#494848",
-    fontSize: 16,
+    fontSize: ({ matches }) => (matches ? 14 : 24),
     fontWeight: 300,
   },
 }));
@@ -28,7 +30,8 @@ const ProductsTable = () => {
   const { products, isLoading } = useAppSelector(
     (state) => state.productsReducer
   );
-  const classes = useStyles();
+  const matches = useMediaQuery("(max-width: 600px)");
+  const classes = useStyles({ matches });
   const dispatch = useAppDispatch();
   const onDeleteHandler = useCallback(
     (id) => {
