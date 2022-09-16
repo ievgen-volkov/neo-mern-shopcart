@@ -29,11 +29,11 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   },
   titleBlock: {
     margin: "0 auto",
-    padding: theme.spacing(3),
-    fontSize: 30,
+    padding: theme.spacing(2),
+    fontSize: 26,
     letterSpacing: ".1rem",
     fontWeight: 600,
-    whiteSpace: "nowrap",
+    // whiteSpace: "nowrap",
   },
 }));
 
