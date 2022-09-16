@@ -8,7 +8,6 @@ import { useAppDispatch } from "../../../app/hooks/useAppDispatch";
 import { add, remove, removeFromCart } from "../../../store/ducks";
 import { Theme, useMediaQuery } from "@mui/material";
 
-
 interface CartItemProps {
   product: ProductItem;
 }
@@ -38,14 +37,15 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     height: 80,
     borderRadius: "50%",
     overflow: "hidden",
-    marginRight: ({ matches }) => (matches ? theme.spacing(1.5) : theme.spacing(0)),
+    marginRight: ({ matches }) =>
+      matches ? theme.spacing(1.5) : theme.spacing(0),
   },
   img: {
     display: "block",
     width: "110%",
     height: "100%",
     background: "#000",
-    padding: theme.spacing(2, 1, 0, 0)
+    padding: theme.spacing(2, 1, 0, 0),
   },
   quantityBlock: {
     width: 55,
@@ -72,7 +72,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     },
   },
   title: {
-    marginLeft: ({ matches }) => (matches ? theme.spacing(0) : theme.spacing(2)),
+    marginLeft: ({ matches }) =>
+      matches ? theme.spacing(0) : theme.spacing(2),
     width: ({ matches }) => (matches ? 85 : 120),
     overflow: "hidden",
     height: 90,
@@ -81,8 +82,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     alignItems: "center",
   },
   removeCart: {
-    margin: ({ matches }) => (matches ? theme.spacing("10px", 0, 0, "94%") : theme.spacing(0)),
-  }
+    margin: ({ matches }) =>
+      matches ? theme.spacing("10px", 0, 0, "94%") : theme.spacing(0),
+  },
 }));
 
 const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
@@ -123,7 +125,7 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
           color="textSecondary"
           className={classes.title}
         >
-         ${product.price}
+          ${product.price}
         </Typography>
         <Typography
           variant="body1"
@@ -147,7 +149,10 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
           </div>
         </Box>
       </Box>
-      <IconButton className={classes.removeCart} onClick={removeFromCartHandler}>
+      <IconButton
+        className={classes.removeCart}
+        onClick={removeFromCartHandler}
+      >
         <RemoveShoppingCart />
       </IconButton>
     </Box>

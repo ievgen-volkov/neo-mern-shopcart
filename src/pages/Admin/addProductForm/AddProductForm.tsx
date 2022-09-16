@@ -24,38 +24,37 @@ import { postProduct, updateProduct } from "../../../store/thunks";
 import { AppRoutes } from "../../../app/ApprRoutes/AppRoutes";
 
 interface FormProps {
-  initialProduct:ProductItem;
+  initialProduct: ProductItem;
   update?: boolean;
 }
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles(() => ({
   root: {
-    width:350,
-    display:"flex",
+    width: 350,
+    display: "flex",
     height: "auto",
-    flexDirection:'column',
-    alignItems:"center",
+    flexDirection: "column",
+    alignItems: "center",
     background: "antiquewhite",
-    '& .MuiSelect-selectMenu' :{
+    "& .MuiSelect-selectMenu": {
       width: 162,
       height: 20,
-      padding: theme.spacing(0.5 ,1),
+      padding: theme.spacing(0.5, 1),
       background: "#FFF",
       marginTop: theme.spacing(2),
-      color:"#838383",
+      color: "#838383",
     },
-    '& input': {
+    "& input": {
       width: 182,
       height: 30,
-      padding: theme.spacing(0.5 ,1),
-      color:"#838383",
-      marginTop: theme.spacing(2)
-    }
-  }
-}))
+      padding: theme.spacing(0.5, 1),
+      color: "#838383",
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
-
-const PostForm: FunctionComponent<FormProps> = ({initialProduct,update}) => {
+const PostForm: FunctionComponent<FormProps> = ({ initialProduct, update }) => {
   const [titleDirty, setTitleDirty] = useState<boolean>(false);
   const [title, setTitle] = useState(initialProduct.title);
   const [imageUrl, setImageUrl] = useState(initialProduct.imageUrl);
@@ -65,11 +64,10 @@ const PostForm: FunctionComponent<FormProps> = ({initialProduct,update}) => {
   const titleRef = React.useRef<HTMLInputElement | null>(null);
   const descRef = React.useRef<HTMLTextAreaElement | null>(null);
 
+  const navigate = useNavigate();
+  const classes = useStyles();
 
-  const navigate = useNavigate()
-  const classes = useStyles()
-
- const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     titleRef.current?.focus();
@@ -117,26 +115,27 @@ const PostForm: FunctionComponent<FormProps> = ({initialProduct,update}) => {
         title: title,
         desc: desc,
         imageUrl: imageUrl,
-        category:category,
+        category: category,
         price: price,
-        quantity : 0,
+        quantity: 0,
       };
-      if (!!desc && !!title && !!category && !!price && !!imageUrl ) {
-       update ? dispatch(updateProduct(newProduct))  :  dispatch(postProduct(newProduct))
-        toast('Product was created !')
-        navigate(AppRoutes.Home)
+      if (!!desc && !!title && !!category && !!price && !!imageUrl) {
+        update
+          ? dispatch(updateProduct(newProduct))
+          : dispatch(postProduct(newProduct));
+        toast("Product was created !");
+        navigate(AppRoutes.Home);
         setTitle("");
         setDesc("");
         setImageUrl("");
         setCategory("");
         setPrice(0);
         setTitleDirty(false);
-
       } else {
         toast("Please, fill the form!");
       }
     },
-    [desc, title, imageUrl, price,category]
+    [desc, title, imageUrl, price, category]
   );
   return (
     <form onSubmit={onSubmitHandler} className={classes.root}>
@@ -150,7 +149,7 @@ const PostForm: FunctionComponent<FormProps> = ({initialProduct,update}) => {
         onChange={onTitleInputHandler}
       />
       <TextareaAutosize
-        style={{ marginTop: 10, border: "1px solid #ccc" ,padding: 5}}
+        style={{ marginTop: 10, border: "1px solid #ccc", padding: 5 }}
         placeholder="product description"
         minRows={4}
         id="desc"
@@ -167,7 +166,7 @@ const PostForm: FunctionComponent<FormProps> = ({initialProduct,update}) => {
         name="imageUrl"
         onChange={onImageUrlInputHandler}
       />
-      <FormControl  className='select'>
+      <FormControl className="select">
         <Select
           value={category}
           onChange={onCategoryInputHandler}

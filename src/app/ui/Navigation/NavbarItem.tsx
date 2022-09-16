@@ -31,9 +31,9 @@ const useStyles = makeStyles<Pick<StyleProps, "active">, StyleProps>(() => ({
     height: 12,
     borderRadius: "50%",
     background: "red",
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     fontSize: 10,
     position: "absolute",
     top: 0,
@@ -57,8 +57,10 @@ const NavbarItem: FunctionComponent<NavbarItemProps> = ({ label, path }) => {
       <Link to={path}>
         <Typography className={classes.title}>{label}</Typography>
       </Link>
-      {(label === "Cart") && totalInCart ? (
-        <Box className={classes.cartIcon}><span className={classes.cartQuantity}>{totalInCart}</span></Box>
+      {label === "Cart" && totalInCart ? (
+        <Box className={classes.cartIcon}>
+          <span className={classes.cartQuantity}>{totalInCart}</span>
+        </Box>
       ) : (
         ""
       )}

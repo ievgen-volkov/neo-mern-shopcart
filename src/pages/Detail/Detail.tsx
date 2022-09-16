@@ -33,7 +33,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
   image: {
     display: "block",
     width: "100%",
-    objectFit:"contain"
+    objectFit: "contain",
   },
   text: {
     padding: theme.spacing(3),
@@ -46,7 +46,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     margin: theme.spacing(2, "auto"),
     textAlign: "center",
     "& span": {
-        color: "red",
+      color: "red",
     },
   },
 }));

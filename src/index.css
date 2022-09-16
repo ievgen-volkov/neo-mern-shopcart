@@ -1,7 +1,7 @@
-
 @font-face {
-  font-family: 'Rubic';
-  src: local('Rubic'), url(./@assets/fonts/rubic/Rubik-Regular.ttf) format('opentype');
+  font-family: "Rubic";
+  src: local("Rubic"),
+    url(./@assets/fonts/rubic/Rubik-Regular.ttf) format("opentype");
 }
 
 *,
@@ -12,12 +12,13 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   min-height: 100vh;
   line-height: 1.15;
   background: #3d2f09;
-  font-family: 'Rubic', sans-serif;
+  font-family: "Rubic", sans-serif;
 }
 
 .App {
@@ -26,7 +27,12 @@ html, body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #252525;
   font-weight: 400;
 }
@@ -40,4 +46,3 @@ img {
   object-fit: contain;
   width: 100%;
 }
-

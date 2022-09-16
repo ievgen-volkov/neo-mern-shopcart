@@ -1,10 +1,9 @@
 import axios from "axios";
 
-
 export const request = axios.create({
-  baseURL:'https://neo-mern.herokuapp.com/api',
+  baseURL: "https://neo-mern.herokuapp.com/api",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   transformRequest: [
     (data) => {
@@ -16,4 +15,4 @@ export const request = axios.create({
       return JSON.parse(data);
     },
   ],
-})
+});

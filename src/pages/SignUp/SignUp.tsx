@@ -4,9 +4,9 @@ import Page from "../../shared/components/Page/Page";
 
 const SignUp = () => {
   return (
-    <Page pageTitle='Signup' centered >
-       <SignupForm/>
-      </Page>
+    <Page pageTitle="Signup" centered>
+      <SignupForm />
+    </Page>
   );
 };
 

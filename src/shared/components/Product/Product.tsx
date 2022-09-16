@@ -8,20 +8,21 @@ import { theme } from "../../../app/constants/theme";
 
 interface ProductProps {
   product: ProductItem;
-  onAddToCart: (product:ProductItem) => void;
+  onAddToCart: (product: ProductItem) => void;
   added: boolean;
 }
-type StyleProps = { isAdded:boolean;}
-const useStyles = makeStyles<Theme,StyleProps>(() => ({
+type StyleProps = { isAdded: boolean };
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   root: {
     width: 310,
     height: 300,
-    background: ({isAdded})=> isAdded ? "antiquewhite":theme.palette.background.paper,
+    background: ({ isAdded }) =>
+      isAdded ? "antiquewhite" : theme.palette.background.paper,
     padding: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: theme.spacing(0,"auto")
+    margin: theme.spacing(0, "auto"),
   },
   title: {
     fontSize: "18px",
@@ -36,7 +37,7 @@ const useStyles = makeStyles<Theme,StyleProps>(() => ({
     overflow: "hidden",
     opacity: 0.98,
     borderRadius: 5,
-    background:"#000",
+    background: "#000",
     transition: "0.3s ease-in-out",
     "&:hover": {
       width: 282,
@@ -53,15 +54,18 @@ const useStyles = makeStyles<Theme,StyleProps>(() => ({
   },
 }));
 
-const Product: FunctionComponent<ProductProps> = ({ product,onAddToCart,added }) => {
+const Product: FunctionComponent<ProductProps> = ({
+  product,
+  onAddToCart,
+  added,
+}) => {
+  const [isAdded, setIsAdded] = useState(added);
+  const classes = useStyles({ isAdded });
 
-  const [isAdded, setIsAdded] = useState(added)
-  const classes = useStyles({isAdded});
-
-  const onAddToCartHandler = useCallback(()=>{
-    onAddToCart(product)
-    setIsAdded(true)
-  },[product,onAddToCart])
+  const onAddToCartHandler = useCallback(() => {
+    onAddToCart(product);
+    setIsAdded(true);
+  }, [product, onAddToCart]);
 
   return (
     <Card className={classes.root} elevation={8}>

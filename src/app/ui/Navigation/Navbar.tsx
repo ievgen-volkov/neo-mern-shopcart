@@ -6,7 +6,8 @@ import {
   useMediaQuery,
   Menu,
   IconButton,
-  Theme, Container
+  Theme,
+  Container,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NavbarMenu from "./NavbarMenu";
@@ -15,32 +16,29 @@ import { AppRoutes, NavItem, navItems } from "../../ApprRoutes/AppRoutes";
 import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(() =>({
-  root : {
-    background: "#3d2f09"
+const useStyles = makeStyles(() => ({
+  root: {
+    background: "#3d2f09",
   },
-  logo : {
+  logo: {
     fontSize: "20px",
     fontWeight: 400,
-    letterSpacing:"0.1rem",
-    color:"#FFF",
+    letterSpacing: "0.1rem",
+    color: "#FFF",
     cursor: "pointer",
-    transition:".15s ease-in-out",
-    "&:hover" : {
-      color:"gold"
-    }
-  }
-
-}))
-
+    transition: ".15s ease-in-out",
+    "&:hover": {
+      color: "gold",
+    },
+  },
+}));
 
 const Navbar = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const [anchor, setAnchor] = React.useState(null);
   const open = Boolean(anchor);
 
   const handleMenu = (event: any) => {
-
     setAnchor(event.currentTarget);
   };
 
@@ -57,45 +55,45 @@ const Navbar = () => {
   return (
     <AppBar className={classes.root}>
       <Container>
-      <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
-        <Link to={AppRoutes.Welcome}>
-        <Typography className={classes.logo}>MERN shopping cart</Typography>
-        </Link>
-        {isMobile ? (
-          <>
-            <IconButton onClick={handleMenu}>
-              <MenuIcon style={{ color: "#FFF" }} />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchor}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={open}
-            >
-              {navItems.map((item:NavItem) => (
-                <NavbarItemMobile
-                  ref={ref}
-                  key={item.id}
-                  label={item.label}
-                  path={item.path}
-                  icon={item.icon}
-                  onClick={onAnchorHandler}
-                />
-              ))}
-            </Menu>
-          </>
-        ) : (
-          <NavbarMenu />
-        )}
-      </Toolbar>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+          <Link to={AppRoutes.Welcome}>
+            <Typography className={classes.logo}>MERN shopping cart</Typography>
+          </Link>
+          {isMobile ? (
+            <>
+              <IconButton onClick={handleMenu}>
+                <MenuIcon style={{ color: "#FFF" }} />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchor}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+              >
+                {navItems.map((item: NavItem) => (
+                  <NavbarItemMobile
+                    ref={ref}
+                    key={item.id}
+                    label={item.label}
+                    path={item.path}
+                    icon={item.icon}
+                    onClick={onAnchorHandler}
+                  />
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <NavbarMenu />
+          )}
+        </Toolbar>
       </Container>
     </AppBar>
   );

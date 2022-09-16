@@ -44,15 +44,15 @@ const ModalBody = styled(Box)`
 const ModalBtn = styled(Button)`
   font-size: 0.9rem;
   font-weight: 700;
-  margin:  0 auto 10px auto;
+  margin: 0 auto 10px auto;
   border: none;
   border-radius: 3px;
   padding: 0.3rem 1rem;
 `;
-const ModalHeader = styled('div')`
- display: flex;
+const ModalHeader = styled("div")`
+  display: flex;
   align-items: center;
-`
+`;
 
 const Modal: FunctionComponent<ModalProps> = ({ open, hide, children }) =>
   open
@@ -61,7 +61,7 @@ const Modal: FunctionComponent<ModalProps> = ({ open, hide, children }) =>
           <ModalOverlay />
           <ModalWrapper role="dialog">
             <ModalBody>
-              <ModalHeader >
+              <ModalHeader>
                 <h6></h6>
                 <ModalBtn onClick={hide}>
                   <span aria-hidden="true">&times; close</span>

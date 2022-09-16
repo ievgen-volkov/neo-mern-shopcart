@@ -4,7 +4,10 @@ import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
 import { LinearProgress } from "@material-ui/core";
 import { theme } from "../../../app/constants/theme";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks/useAppDispatch";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/hooks/useAppDispatch";
 import { useFetchAllProducts } from "../../../app/hooks/useFetchAllProducts";
 import { deleteProduct } from "../../../store/thunks";
 import { ProductItem } from "../../../shared/models/models";
@@ -53,7 +56,7 @@ const ProductsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product: ProductItem ) => (
+            {products.map((product: ProductItem) => (
               <Row
                 product={product}
                 key={product._id}

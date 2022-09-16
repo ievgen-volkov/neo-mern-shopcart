@@ -1,7 +1,7 @@
 import React, { FunctionComponent, memo, useCallback } from "react";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SystemSecurityUpdateIcon from '@mui/icons-material/SystemSecurityUpdate';
+import SystemSecurityUpdateIcon from "@mui/icons-material/SystemSecurityUpdate";
 import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import { ProductItem } from "../../../shared/models/models";
@@ -27,11 +27,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Row: FunctionComponent<RowProps> = ({ product, onDelete }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const onClickHandler = useCallback(() => {
     onDelete(product._id);
-    dispatch(fetchAllProducts())
+    dispatch(fetchAllProducts());
   }, [onDelete, product._id]);
 
   const classes = useStyles();
@@ -47,9 +47,9 @@ const Row: FunctionComponent<RowProps> = ({ product, onDelete }) => {
       </td>
       <td className={classes.cell}>
         <Link to={`/admin/update_product/${product._id}`}>
-        <IconButton style={{ color: "blue" }} >
-          <SystemSecurityUpdateIcon />
-        </IconButton>
+          <IconButton style={{ color: "blue" }}>
+            <SystemSecurityUpdateIcon />
+          </IconButton>
         </Link>
       </td>
     </tr>

@@ -6,50 +6,46 @@ import { AppRoutes } from "../../../app/ApprRoutes/AppRoutes";
 import { theme } from "../../../app/constants/theme";
 import { Theme, useMediaQuery } from "@mui/material";
 
-
 interface BackToHomeBtnProps {
   title: string;
 }
 
 type StyleProps = { matches: boolean };
 
-
-const useStyles = makeStyles<Theme, StyleProps>(()=>({
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   root: {
     width: 175,
     height: 40,
-    display:"flex",
-    alignItems:"center",
-    margin: ({ matches }) => (matches ? theme.spacing(0,"auto", 2) : theme.spacing(0,"auto")),
+    display: "flex",
+    alignItems: "center",
+    margin: ({ matches }) =>
+      matches ? theme.spacing(0, "auto", 2) : theme.spacing(0, "auto"),
     borderRadius: "30px",
     background: "#3d2f09",
-    boxShadow:" 0 0 5px #f0d27f",
-    border:'none',
+    boxShadow: " 0 0 5px #f0d27f",
+    border: "none",
     fontWeight: 400,
-    fontSize:"20px",
-    letterSpacing:"0.09rem",
+    fontSize: "20px",
+    letterSpacing: "0.09rem",
     color: "#f0d27f",
     cursor: "pointer",
-    transition:"0.15s ease-in-out",
-    "&:hover" : {
+    transition: "0.15s ease-in-out",
+    "&:hover": {
       background: "#f0d27f",
       color: "#3d2f09",
-      boxShadow:" 0 0 5px #3d2f09",
-    }
-  }
+      boxShadow: " 0 0 5px #3d2f09",
+    },
+  },
+}));
 
-}))
-
-
-
-const BackToHomeBtn:FunctionComponent<BackToHomeBtnProps> = ({title}) => {
+const BackToHomeBtn: FunctionComponent<BackToHomeBtnProps> = ({ title }) => {
   const matches = useMediaQuery("(max-width:600px)");
   const classes = useStyles({ matches });
 
   return (
     <Link to={AppRoutes.Home}>
-      <button type='button' className={classes.root}>
-        <ArrowLeft/>
+      <button type="button" className={classes.root}>
+        <ArrowLeft />
         {title}
       </button>
     </Link>

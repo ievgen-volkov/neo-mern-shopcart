@@ -9,28 +9,31 @@ interface PageProps {
   centered?: boolean;
   background?: boolean;
   rowDirection?: boolean;
-  withoutBg?:boolean;
+  withoutBg?: boolean;
 }
 interface StyleProps {
   centered?: boolean;
   rowDirection?: boolean;
-  withoutBg?:boolean;
+  withoutBg?: boolean;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   root: {
     minHeight: "100vh",
+    width: "100%",
     display: "flex",
     flexDirection: (styleProps) => (styleProps.rowDirection ? "row" : "column"),
     alignItems: (styleProps) => (styleProps.centered ? "center" : "flex-start"),
-    background: ({withoutBg}) => withoutBg ? "transparent": `url(${bg}) center center/cover`,
+    background: ({ withoutBg }) =>
+      withoutBg ? "transparent" : `url(${bg}) center center/cover`,
   },
   titleBlock: {
     margin: "0 auto",
-    padding: theme.spacing(2),
-    fontSize: 34,
+    padding: theme.spacing(3),
+    fontSize: 30,
     letterSpacing: ".1rem",
     fontWeight: 600,
+    whiteSpace: "nowrap",
   },
 }));
 
@@ -44,7 +47,7 @@ const Page: FunctionComponent<PageProps> = ({
   const stylePops = {
     centered,
     rowDirection,
-    withoutBg
+    withoutBg,
   };
   const classes = useStyles(stylePops);
 

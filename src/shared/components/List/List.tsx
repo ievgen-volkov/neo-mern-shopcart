@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import {  ListOptionsItem } from "../../models/models";
+import { ListOptionsItem } from "../../models/models";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import ListItem from "./ListItem";
@@ -8,8 +8,7 @@ import { theme } from "../../../app/constants/theme";
 interface ListProps {
   options: ListOptionsItem[];
   sortDirection?: "ASC" | "DESC";
-  onClick: (filterOption:string ) => void;
-
+  onClick: (filterOption: string) => void;
 }
 
 const useStyles = makeStyles(() => ({
@@ -21,17 +20,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const List: FunctionComponent<ListProps> = ({ options,onClick }) => {
+const List: FunctionComponent<ListProps> = ({ options, onClick }) => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
       {options.map((item) => (
-        <ListItem
-          onClick={onClick}
-          item={item}
-          key={item.id}
-        />
+        <ListItem onClick={onClick} item={item} key={item.id} />
       ))}
     </Box>
   );

@@ -5,20 +5,16 @@ import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import { theme } from "../constants/theme";
 
-
 interface Props {
-  children: JSX.Element[]
+  children: JSX.Element[];
 }
 
-
-const ProvidersUtil:FunctionComponent<Props> = ({children}) => {
+const ProvidersUtil: FunctionComponent<Props> = ({ children }) => {
   return (
     <Provider store={store}>
-    <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          {children}
-        </BrowserRouter>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </ThemeProvider>
     </Provider>
   );
 };

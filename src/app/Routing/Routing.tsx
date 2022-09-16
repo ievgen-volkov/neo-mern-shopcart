@@ -11,20 +11,21 @@ import SignUp from "../../pages/SignUp/SignUp";
 import AddProductPage from "../../pages/Admin/AddProductPage/AddProductPage";
 import { UpdateProductPage } from "../../pages/Admin/UpdateProductPage/UpdateProductPage";
 
-
-
 const Routing = () => {
   return (
     <Routes>
-      <Route path={AppRoutes.Welcome} element={<Welcome/>} />
-      <Route path={AppRoutes.Home} element={<Home/>} />
-      <Route path={AppRoutes.About} element={<About/>} />
-      <Route path={AppRoutes.Cart} element={<Cart/>} />
-      <Route path={AppRoutes.Admin} element={<Admin/>} />
-      <Route path={AppRoutes.Detail} element={<Detail/>} />
-      <Route path={AppRoutes.SignUp} element={<SignUp/>} />
-      <Route path={AppRoutes.AddProductPage} element={<AddProductPage/>} />
-      <Route path={AppRoutes.UpdateProductPage} element={<UpdateProductPage/>} />
+      <Route path={AppRoutes.Welcome} element={<Welcome />} />
+      <Route path={AppRoutes.Home} element={<Home />} />
+      <Route path={AppRoutes.About} element={<About />} />
+      <Route path={AppRoutes.Cart} element={<Cart />} />
+      <Route path={AppRoutes.Admin} element={<Admin />} />
+      <Route path={AppRoutes.Detail} element={<Detail />} />
+      <Route path={AppRoutes.SignUp} element={<SignUp />} />
+      <Route path={AppRoutes.AddProductPage} element={<AddProductPage />} />
+      <Route
+        path={AppRoutes.UpdateProductPage}
+        element={<UpdateProductPage />}
+      />
     </Routes>
   );
 };

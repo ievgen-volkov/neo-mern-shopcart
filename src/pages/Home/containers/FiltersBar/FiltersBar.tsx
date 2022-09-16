@@ -8,31 +8,58 @@ import { theme } from "../../../../app/constants/theme";
 
 type StyleProps = { matches: boolean };
 
-const useStyles = makeStyles<Theme, StyleProps>(() =>({
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   filters: {
     fontSize: ({ matches }) => (matches ? "15px" : "18px"),
     fontWeight: 400,
     color: theme.palette.warning.contrastText,
-  }
-
-}))
+  },
+}));
 
 const FiltersBar = () => {
- const dispatch = useAppDispatch()
- const onCategoryChange = useCallback((categoryName:string) =>{
-   dispatch(category(categoryName))
- },[dispatch]);
+  const dispatch = useAppDispatch();
+  const onCategoryChange = useCallback(
+    (categoryName: string) => {
+      dispatch(category(categoryName));
+    },
+    [dispatch]
+  );
 
- const matches = useMediaQuery("(max-width: 600px)")
+  const matches = useMediaQuery("(max-width: 600px)");
   const classes = useStyles({ matches });
 
-
   return (
-    <Box sx={{ width: matches ? 340 : 400, margin: "0 auto 15px" }} role="presentation" display="flex" justifyContent="space-between" mb={2}>
-      <Button className={classes.filters} onMouseEnter={()=> onCategoryChange("")}>All</Button>
-      <Button className={classes.filters} onMouseEnter={()=> onCategoryChange("photo")}>Cameras</Button>
-      <Button className={classes.filters} onMouseEnter={()=> onCategoryChange("watches")}>Watches</Button>
-      <Button className={classes.filters} onMouseEnter={()=> onCategoryChange("phones")}>Phones</Button>
+    <Box
+      sx={{ width: matches ? 340 : 400, margin: "0 auto 15px" }}
+      role="presentation"
+      display="flex"
+      justifyContent="space-between"
+      mb={2}
+    >
+      <Button
+        className={classes.filters}
+        onMouseEnter={() => onCategoryChange("")}
+      >
+        All
+      </Button>
+      <Button
+        className={classes.filters}
+        onMouseEnter={() => onCategoryChange("photo")}
+      >
+        Cameras
+      </Button>
+      <Button
+        className={classes.filters}
+        onMouseEnter={() => onCategoryChange("watches")}
+      >
+        Watches
+      </Button>
+      <Button
+        className={classes.filters}
+        onMouseEnter={() => onCategoryChange("phones")}
+      >
+        Phones
+      </Button>
     </Box>
   );
 };
