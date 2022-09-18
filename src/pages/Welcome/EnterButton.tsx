@@ -13,12 +13,13 @@ type StyleProps = { matches: boolean };
 
 const useStyles = makeStyles<Theme, StyleProps>(() => ({
   root: {
-    width: 150,
-    height: 40,
+    width: ({ matches }) => (matches ? 100 : 150),
+    height: ({ matches }) => (matches ? 65 : 40),
     position: "absolute",
-    bottom: ({ matches }) => (matches ? 120 : 600),
-    right: ({ matches }) => (matches ? 110 : 230),
-    borderRadius: "30px",
+    bottom: ({ matches }) => (matches ? "5%" : "53%"),
+    right: ({ matches }) => (matches ? "22%" : "10%"),
+    transform: "translate(-50%, -50%)",
+    borderRadius: ({ matches }) => (matches ? "50px" : "30px"),
     background: "#3d2f09",
     boxShadow: " 0 0 5px #f0d27f",
     border: "none",

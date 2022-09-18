@@ -24,7 +24,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     margin: theme.spacing(0, "auto"),
   },
   root: {
-    maxWidth: ({ matches }) => (matches ? 364 : 800),
+    maxWidth: ({ matches }) => (matches ? 358 : 800),
     height: 100,
     display: "flex",
     justifyContent: "space-between",
@@ -34,7 +34,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
   },
   imageWrapper: {
     width: 80,
-    height: 80,
+    height: ({ matches }) => (matches ? 70 : 80),
     borderRadius: "50%",
     overflow: "hidden",
     marginRight: ({ matches }) =>
@@ -82,8 +82,11 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     alignItems: "center",
   },
   removeCart: {
+    position: ({ matches }) => (matches ? "relative" : "initial"),
+    bottom: "39%",
+    right: "-27%",
     margin: ({ matches }) =>
-      matches ? theme.spacing("10px", 0, 0, "94%") : theme.spacing(0),
+      matches ? theme.spacing("0px", 0, 0, "0%") : theme.spacing(0),
   },
 }));
 
