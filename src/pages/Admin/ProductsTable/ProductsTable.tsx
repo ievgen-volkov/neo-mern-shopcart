@@ -16,12 +16,12 @@ type StyleProps = {matches: boolean};
 
 const useStyles = makeStyles<Theme, StyleProps>(() => ({
   cell: {
-    padding: theme.spacing(0.8, 1),
+    padding: ({ matches }) => (matches ? theme.spacing(0.4, 0.4) : theme.spacing(0.8, 0.8)),
     background: "#dcdbdb",
     border: "1px solid #ccc",
     color: "#494848",
-    fontSize: ({ matches }) => (matches ? 14 : 24),
-    fontWeight: 300,
+    fontSize: ({ matches }) => (matches ? 16 : 24),
+    fontWeight: 800,
   },
 }));
 
@@ -42,7 +42,7 @@ const ProductsTable = () => {
 
   return (
     <Box>
-      <Typography variant="h6" align="center" mb={4} mt={2}>
+      <Typography variant="h5" align="center" letterSpacing={1} mb={4} mt={3}>
         All products
       </Typography>
       {isLoading ? (

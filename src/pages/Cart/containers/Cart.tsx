@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     fontWeight: 800,
     letterSpacing: "0.07rem",
     display: "block",
-    margin: theme.spacing(2, "auto"),
+    margin: theme.spacing(3, "auto"),
     textAlign: "center",
     "& span": {
       color: "red",
@@ -27,7 +27,7 @@ const Cart = () => {
 
   return (
     <Page pageTitle="Your Cart" centered>
-      {products.length > 0 ? (
+      {products.length ? (
         <Grid container spacing={1} direction="column-reverse">
           {products.map((product) => (
             <Grid item xs key={product._id}>
@@ -41,10 +41,9 @@ const Cart = () => {
       <Typography
         variant="subtitle1"
         color="textPrimary"
-        style={{ marginTop: 15 }}
         className={classes.price}
       >
-        subTotal <span>${subTotal}</span>
+        subTotal: <span>${subTotal}</span>
       </Typography>
     </Page>
   );

@@ -4,22 +4,19 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "@material-ui/icons";
 import { AppRoutes } from "../../../app/ApprRoutes/AppRoutes";
 import { theme } from "../../../app/constants/theme";
-import { Theme, useMediaQuery } from "@mui/material";
+import { Theme } from "@mui/material";
 
 interface BackToHomeBtnProps {
   title: string;
 }
 
-type StyleProps = { matches: boolean };
-
-const useStyles = makeStyles<Theme, StyleProps>(() => ({
+const useStyles = makeStyles<Theme>(() => ({
   root: {
     width: 175,
     height: 40,
     display: "flex",
     alignItems: "center",
-    margin: ({ matches }) =>
-      matches ? theme.spacing(0, "auto", 2) : theme.spacing(0, "auto"),
+    margin: theme.spacing(3, "auto", 3),
     borderRadius: "30px",
     background: "#3d2f09",
     boxShadow: " 0 0 5px #f0d27f",
@@ -39,8 +36,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
 }));
 
 const BackToHomeBtn: FunctionComponent<BackToHomeBtnProps> = ({ title }) => {
-  const matches = useMediaQuery("(max-width:600px)");
-  const classes = useStyles({ matches });
+  const classes = useStyles();
 
   return (
     <Link to={AppRoutes.Home}>

@@ -8,7 +8,6 @@ import { ProductItem } from "../../../shared/models/models";
 import { theme } from "../../../app/constants/theme";
 import { useAppDispatch } from "../../../app/hooks/useAppDispatch";
 import { fetchAllProducts } from "../../../store/thunks";
-import { matches } from "lodash";
 
 export interface RowProps {
   product: ProductItem;
