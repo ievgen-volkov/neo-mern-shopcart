@@ -5,17 +5,18 @@ import { Box, Button, Card, Theme, Typography } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { theme } from "../../../app/constants/theme";
+import { useMediaQuery } from "@mui/material";
 
 interface ProductProps {
   product: ProductItem;
   onAddToCart: (product: ProductItem) => void;
   added: boolean;
 }
-type StyleProps = { isAdded: boolean };
+type StyleProps = { isAdded: boolean, matches: boolean };
 const useStyles = makeStyles<Theme, StyleProps>(() => ({
   root: {
     width: 310,
-    height: 294,
+    height: ({ matches }) => (matches ? 292 : 310),
     background: ({ isAdded }) =>
       isAdded ? "antiquewhite" : theme.palette.background.paper,
     padding: theme.spacing(2),
@@ -60,7 +61,8 @@ const Product: FunctionComponent<ProductProps> = ({
   added,
 }) => {
   const [isAdded, setIsAdded] = useState(added);
-  const classes = useStyles({ isAdded });
+  const matches = useMediaQuery("(max-width: 600px)")
+  const classes = useStyles({ isAdded, matches });
 
   const onAddToCartHandler = useCallback(() => {
     onAddToCart(product);

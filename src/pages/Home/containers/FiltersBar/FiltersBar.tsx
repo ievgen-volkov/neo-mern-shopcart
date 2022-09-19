@@ -30,7 +30,7 @@ const FiltersBar = () => {
 
   return (
     <Box
-      sx={{ width: matches ? 340 : 400, margin: "0 auto 15px" }}
+      sx={{ width: matches ? 328 : 400, margin: "0 auto 14px" }}
       role="presentation"
       display="flex"
       justifyContent="space-between"
