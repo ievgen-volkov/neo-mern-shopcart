@@ -16,7 +16,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     width: ({ matches }) => (matches ? 100 : 150),
     height: ({ matches }) => (matches ? 65 : 40),
     position: "absolute",
-    bottom: ({ matches }) => (matches ? "5%" : "53%"),
+    bottom: ({ matches }) => (matches ? "1.5%" : "53%"),
     right: ({ matches }) => (matches ? "22%" : "10%"),
     transform: "translate(-50%, -50%)",
     borderRadius: ({ matches }) => (matches ? "50px" : "30px"),
