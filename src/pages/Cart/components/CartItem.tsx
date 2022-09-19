@@ -77,6 +77,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     width: ({ matches }) => (matches ? 85 : 120),
     overflow: "hidden",
     height: 90,
+    fontWeight: 700,
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
