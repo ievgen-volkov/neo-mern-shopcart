@@ -18,11 +18,11 @@ type styleProps = { matches: boolean };
 
 const useStyles = makeStyles<Theme, styleProps>(() => ({
   cell: {
-    padding: theme.spacing(0.5, 1),
+    padding: ({ matches }) => (matches ? theme.spacing(0.5, 0.5) : theme.spacing(0.5, 1)),
     background: "#FFF",
     border: "1px solid #ccc",
     color: "#494848",
-    fontSize: ({ matches }) => (matches ? 15 : 20),
+    fontSize: ({ matches }) => (matches ? 16 : 20),
     textAlign: "center",
     letterSpacing: "0.05rem",
   },
