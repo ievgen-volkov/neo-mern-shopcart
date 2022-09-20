@@ -123,7 +123,7 @@ const PostForm: FunctionComponent<FormProps> = ({ initialProduct, update }) => {
         update
           ? dispatch(updateProduct(newProduct))
           : dispatch(postProduct(newProduct));
-        toast("Product was created !");
+        toast("Product was created!");
         navigate(AppRoutes.Home);
         setTitle("");
         setDesc("");
@@ -176,7 +176,7 @@ const PostForm: FunctionComponent<FormProps> = ({ initialProduct, update }) => {
           <MenuItem value={category}>
             <em>all</em>
           </MenuItem>
-          <MenuItem value={"photo"}>photo</MenuItem>
+          <MenuItem value={"cameras"}>cameras</MenuItem>
           <MenuItem value={"phones"}>phones</MenuItem>
           <MenuItem value={"watches"}>watches</MenuItem>
         </Select>

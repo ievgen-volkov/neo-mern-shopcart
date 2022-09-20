@@ -20,12 +20,12 @@ const ProductsGrid = () => {
   );
 
   return (
-    <Grid container style={{ maxWidth: 1400 }} spacing={1}>
+    <Grid container>
       {isLoading ? (
         <LinearProgress />
       ) : (
         products.map((product) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={product._id}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={product._id} style={{paddingBottom: 8}}>
             <Product
               product={product}
               onAddToCart={onAddToCartHandler}
