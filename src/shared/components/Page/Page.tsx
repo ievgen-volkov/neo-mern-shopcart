@@ -20,7 +20,7 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   root: {
     minHeight: "100vh",
-    width: "100%",
+    maxWidth: "1600px",
     display: "flex",
     flexDirection: (styleProps) => (styleProps.rowDirection ? "row" : "column"),
     alignItems: (styleProps) => (styleProps.centered ? "center" : "flex-start"),

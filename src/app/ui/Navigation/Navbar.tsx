@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { FunctionComponent, useCallback, useRef } from "react";
 import {
   AppBar,
   Toolbar,
@@ -14,27 +14,41 @@ import NavbarMenu from "./NavbarMenu";
 import NavbarItemMobile from "./NavbarItemMobile";
 import { AppRoutes, NavItem, navItems } from "../../ApprRoutes/AppRoutes";
 import { makeStyles } from "@material-ui/styles";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const useStyles = makeStyles(() => ({
+interface StyleProps {
+  pathname: string;
+  matches: boolean;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   root: {
     background: "#3d2f09",
   },
+  toolbar: {
+    justifyContent: ({ pathname }) => pathname === "/" ? "center" : "space-between",
+  },
   logo: {
-    fontSize: "20px",
+    fontFamily: "Rubik Dirt",
+    fontSize: ({ matches }) => (matches ? "20px" : "30px"),
     fontWeight: 400,
     letterSpacing: "0.1rem",
     color: "#FFF",
     cursor: "pointer",
-    transition: ".15s ease-in-out",
+    transition: ".4s ease-in-out",
+    "& span": {
+      color: "#00B965",
+    },
     "&:hover": {
       color: "gold",
     },
   },
 }));
 
-const Navbar = () => {
-  const classes = useStyles();
+const Navbar: FunctionComponent = () => {
+  const { pathname } = useLocation();
+  const matches = useMediaQuery("(max-width: 600px)")
+  const classes = useStyles({ pathname, matches });
   const [anchor, setAnchor] = React.useState(null);
   const open = Boolean(anchor);
 
@@ -55,14 +69,21 @@ const Navbar = () => {
   return (
     <AppBar className={classes.root}>
       <Container>
-        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar className={classes.toolbar}>
           <Link to={AppRoutes.Welcome}>
-            <Typography className={classes.logo}>MERN shopping cart</Typography>
+            <Typography className={classes.logo}>
+              <span>M</span>ERN
+              {" "}
+              <span>s</span>hopping
+              {" "}
+              <span>c</span>art
+            </Typography>
           </Link>
           {isMobile ? (
+            pathname === "/" ? "" :
             <>
               <IconButton onClick={handleMenu}>
-                <MenuIcon style={{ color: "#FFF" }} />
+                <MenuIcon style={{ color: "#00B965" }} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -91,7 +112,9 @@ const Navbar = () => {
               </Menu>
             </>
           ) : (
-            <NavbarMenu />
+            pathname === "/"
+              ? ""
+              : <NavbarMenu />
           )}
         </Toolbar>
       </Container>

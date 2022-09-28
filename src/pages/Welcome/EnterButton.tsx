@@ -28,7 +28,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     letterSpacing: "0.12rem",
     color: "#f0d27f",
     cursor: "pointer",
-    transition: "0.15s ease-in-out",
+    transition: "0.4s ease-in-out",
     "&:hover": {
       background: "#f0d27f",
       color: "#3d2f09",

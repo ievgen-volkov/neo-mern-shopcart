@@ -26,7 +26,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     margin: theme.spacing(0, "auto"),
   },
   title: {
-    fontSize: "18px",
+    fontSize: "16px",
     letterSpacing: "0.1rem",
     fontWeight: 300,
     color: theme.palette.primary.main,
@@ -38,10 +38,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     overflow: "hidden",
     opacity: 0.98,
     borderRadius: 5,
-    background: "#000",
-    transition: "0.3s ease-in-out",
+    background: "transparent",
+    transition: "0.4s ease-in-out",
     "&:hover": {
-      width: 282,
+      width: 284,
       opacity: 1,
     },
   },
@@ -78,7 +78,7 @@ const Product: FunctionComponent<ProductProps> = ({
         <img src={product.imageUrl} alt={product.title} />
       </Box>
       <Box alignSelf="flex-start" mt={2}>
-        price : ${product.price}
+        price: ${product.price}
       </Box>
       <Box className={classes.actionBlock}>
         <Link to={`/product/${product._id}`}>
@@ -87,7 +87,7 @@ const Product: FunctionComponent<ProductProps> = ({
           </Button>
         </Link>
         <Button color="primary" onClick={onAddToCartHandler} disabled={isAdded}>
-          <p style={{ marginRight: 4 }}>add to cart </p>
+          <p style={{ marginRight: 4 }}>add to cart</p>
           <AddShoppingCart />
         </Button>
       </Box>

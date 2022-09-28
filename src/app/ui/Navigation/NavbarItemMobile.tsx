@@ -16,8 +16,11 @@ const useStyles = makeStyles(() => ({
   root: {
     width: 100,
     height: 20,
-    padding: 0,
-    color: theme.palette.primary.main,
+    letterSpacing: "0.1rem",
+    color: theme.palette.primary.contrastText,
+    "&:first-letter": {
+      color: "#00B965",
+    },
     "&:hover": {
       color: theme.palette.secondary.dark,
     },
@@ -31,7 +34,7 @@ const NavbarItemMobile: FunctionComponent<Props> = forwardRef(
       <MenuItem onClick={onClick}>
         <Link
           to={path}
-          style={{ display: "flex", alignItems: "center" }}
+          style={{ display: "flex", alignItems: "center", fontWeight: "bold" }}
           ref={ref}
         >
           <Typography variant="inherit" className={classes.root}>

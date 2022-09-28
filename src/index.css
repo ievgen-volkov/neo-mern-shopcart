@@ -4,6 +4,12 @@
     url(./@assets/fonts/rubic/Rubik-Regular.ttf) format("opentype");
 }
 
+@font-face {
+  font-family: "Rubik Dirt";
+  src: local("RubikDirt-Regular.ttf"),
+    url(./@assets/fonts/Rubik_Dirt/RubikDirt-Regular.ttf) format("opentype");
+}
+
 *,
 *:before,
 *:after {
@@ -35,6 +41,10 @@ h5,
 h6 {
   color: #252525;
   font-weight: 400;
+}
+
+ul {
+  background: #3d2f09;
 }
 
 a {
