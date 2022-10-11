@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
       color: "#00B965",
     },
   },
-  linkmail: {
+  linkemail: {
     color: "#FBBC04",
     "&:hover": {
       color: "#00B965",
@@ -73,7 +73,7 @@ const Footer = () => {
                 target="_blank"
                 href="mailto:neoodessa86@gmail.com"
               >
-                <MailOutlineIcon className={classes.linkmail} />
+                <MailOutlineIcon className={classes.linkemail} />
               </IconButton>
               <IconButton
                 target="_blank"

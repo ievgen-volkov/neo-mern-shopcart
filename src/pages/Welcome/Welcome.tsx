@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
-import bgm from "../../@assets/img/welcome_to_our_shop_mobile.jpg";
+import bgm from "../../@assets/img/welcome_mobile_version.jpg";
 import bg from "../../@assets/img/welcome_bg.jpg";
 import EnterButton from "./EnterButton";
 import { useFetchAllProducts } from "../../app/hooks/useFetchAllProducts";
