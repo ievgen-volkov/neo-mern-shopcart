@@ -35,7 +35,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     letterSpacing: "0.1rem",
     color: "#FFF",
     cursor: "pointer",
-    transition: ".4s ease-in-out",
+    transition: ".7s ease-in-out",
     "& span": {
       color: "#00B965",
     },

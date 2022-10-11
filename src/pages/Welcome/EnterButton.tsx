@@ -26,7 +26,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     fontWeight: 400,
     fontSize: "20px",
     letterSpacing: "0.12rem",
-    color: "#f0d27f",
+    color: ({ matches }) => (matches ? "#F4EBDC" : "#f0d27f"),
     cursor: "pointer",
     transition: "0.4s ease-in-out",
     "&:hover": {

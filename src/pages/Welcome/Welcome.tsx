@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
+import bgm from "../../@assets/img/welcome_to_our_shop_mobile.jpg";
 import bg from "../../@assets/img/welcome_bg.jpg";
 import EnterButton from "./EnterButton";
 import { useFetchAllProducts } from "../../app/hooks/useFetchAllProducts";
@@ -15,8 +16,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     overflow: "hidden",
     background: ({ matches }) =>
       matches
-        ? `url(${bg}) 26%/86em no-repeat `
-        : `url(${bg}) center center/cover`,
+        ? `url(${bgm}) center center/cover`
+        : `url(${bg}) center center/cover`
   },
 }));
 

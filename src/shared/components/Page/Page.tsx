@@ -22,8 +22,8 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     minHeight: "100vh",
     maxWidth: "1600px",
     display: "flex",
-    flexDirection: (styleProps) => (styleProps.rowDirection ? "row" : "column"),
-    alignItems: (styleProps) => (styleProps.centered ? "center" : "flex-start"),
+    flexDirection: ({ rowDirection }) => (rowDirection ? "row" : "column"),
+    alignItems: ({ centered }) => (centered ? "center" : "flex-start"),
     background: ({ withoutBg }) =>
       withoutBg ? "transparent" : `url(${bg}) center center/cover`,
   },
@@ -52,9 +52,10 @@ const Page: FunctionComponent<PageProps> = ({
 
   return (
     <Container maxWidth="xl" className={classes.root}>
-      <Box width={"100%"} height={"80px"}></Box>
+      <Box width={"100%"} height={"80px"}/>
       {pageTitle && <Box className={classes.titleBlock}>{pageTitle}</Box>}
       {children}
+      <Box width={"100%"} height={"51px"}/>
     </Container>
   );
 };

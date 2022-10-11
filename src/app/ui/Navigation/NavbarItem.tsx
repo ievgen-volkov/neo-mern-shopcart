@@ -38,8 +38,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     width: ({active,hovered}) => active || hovered ? "100%" : 0,
     height: 3,
     borderRadius: "5px",
-    background:"#00B965",
-    transition:".7s ease-in-out"
+    background: "#00B965",
+    transition: ".7s ease-in-out"
   },
   cartIcon: {
     width: 14,
